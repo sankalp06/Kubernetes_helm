@@ -1,0 +1,20 @@
+# templates/coordinator-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-microservices-chart.fullname" . }}-coordinator-service
+spec:
+  replicas: {{ .Values.coordinator.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "my-microservices-chart.name" . }}-coordinator-service
+  template:
+    metadata:
+      labels:
+        app: {{ include "my-microservices-chart.name" . }}-coordinator-service
+    spec:
+      containers:
+        - name: coordinator-service
+          image: "{{ .Values.coordinator.image.repository }}:{{ .Values.coordinator.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.coordinator.service.port }}

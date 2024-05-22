@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adder-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: adder
+  template:
+    metadata:
+      labels:
+        app: adder
+    spec:
+      containers:
+      - name: adder
+        image: iscsregistry.azurecr.io/sum:v1
+        ports:
+        - containerPort: 5002

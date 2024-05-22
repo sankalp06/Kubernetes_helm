@@ -1,0 +1,13 @@
+# templates/subtractor-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: subtractor-service
+spec:
+  selector:
+    app: subtractor-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5002
+  type: ClusterIP

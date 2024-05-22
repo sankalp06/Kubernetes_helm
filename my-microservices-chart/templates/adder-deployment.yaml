@@ -1,0 +1,24 @@
+# templates/adder-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-microservices-chart.fullname" . }}-adder-service
+spec:
+  replicas: {{ .Values.adder.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "my-microservices-chart.name" . }}-adder-service
+  template:
+    metadata:
+      labels:
+        app: {{ include "my-microservices-chart.name" . }}-adder-service
+    spec:
+      containers:
+        - name: adder-service
+          image: "{{ .Values.adder.image.repository }}:{{ .Values.adder.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.adder.service.port }}
+
+
+
+ 

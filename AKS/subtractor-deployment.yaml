@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subtractor-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: subtractor
+  template:
+    metadata:
+      labels:
+        app: subtractor
+    spec:
+      containers:
+      - name: subtractor
+        image: iscsregistry.azurecr.io/sub:v1
+        ports:
+        - containerPort: 5001

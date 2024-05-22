@@ -1,0 +1,24 @@
+# values.yaml
+adder:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/sub:v1
+    tag: latest
+  service:
+    port: 5001
+
+subtractor:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/sum:v1
+    tag: latest
+  service:
+    port: 5002
+
+coordinator:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/calculator:v1
+    tag: latest
+  service:
+    port: 8501

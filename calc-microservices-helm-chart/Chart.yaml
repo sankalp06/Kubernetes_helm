@@ -1,0 +1,6 @@
+# Chart.yaml
+apiVersion: v2
+name: my-microservices-chart
+description: A Helm chart for deploying microservices
+type: application
+version: 1.0.0

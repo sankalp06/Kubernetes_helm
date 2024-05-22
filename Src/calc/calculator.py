@@ -31,6 +31,7 @@ with col1:
             st.error(f"JSON decoding failed: {e}")
 
 # Subtract button and response display
+
 with col2:
     if st.button("Subtract"):
         try:

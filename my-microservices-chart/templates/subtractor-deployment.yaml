@@ -1,0 +1,20 @@
+# templates/subtractor-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-microservices-chart.fullname" . }}-subtractor-service
+spec:
+  replicas: {{ .Values.subtractor.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "my-microservices-chart.name" . }}-subtractor-service
+  template:
+    metadata:
+      labels:
+        app: {{ include "my-microservices-chart.name" . }}-subtractor-service
+    spec:
+      containers:
+        - name: subtractor-service
+          image: "{{ .Values.subtractor.image.repository }}:{{ .Values.subtractor.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.subtractor.service.port }}

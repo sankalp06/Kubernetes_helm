@@ -1,0 +1,33 @@
+# Default values for my-microservices-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+adder:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/sub
+    tag: v1
+    pullPolicy: IfNotPresent
+  service:
+    port: 5001
+
+subtractor:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/sum
+    tag: v1
+    pullPolicy: IfNotPresent
+  service:
+    port: 5002
+
+coordinator:
+  replicaCount: 3
+  image:
+    repository: iscsregistry.azurecr.io/calculator
+    tag: v1
+    pullPolicy: IfNotPresent
+  service:
+    port: 8501
+
+service:
+  type: ClusterIP
